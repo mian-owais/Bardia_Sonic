@@ -1,177 +1,54 @@
-# Text-to-Speech Platform
+# React + TypeScript + Vite
 
-A modern web application that converts PDF documents to speech with advanced features like background sound effects and collaborative note-taking.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+Currently, two official plugins are available:
 
-- **PDF to Speech Conversion**
-  - Upload and process PDF documents
-  - Convert text to speech using Gemini API
-  - Add background sound effects based on content
-  - Download audio files
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **Advanced Note-Taking System**
-  - Rich text editing
-  - Tag-based organization
-  - Collaboration features
-  - Version history
-  - Color coding and pinning
+## Expanding the ESLint configuration
 
-- **Subscription Management**
-  - Multiple subscription tiers
-  - Secure payment processing
-  - Usage analytics
-  - Plan upgrades and cancellations
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- **User Management**
-  - Secure authentication
-  - Profile management
-  - Usage statistics
-  - Document history
-
-## Tech Stack
-
-### Frontend
-- React with TypeScript
-- Material-UI for components
-- Redux for state management
-- Chart.js for analytics
-- React Dropzone for file uploads
-
-### Backend
-- Node.js with Express
-- MongoDB for database
-- JWT for authentication
-- Stripe for payments
-- Google Gemini API for text processing
-
-## Getting Started
-
-### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB
-- Google Gemini API key
-- Stripe account
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/tts-platform.git
-cd tts-platform
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-2. Install backend dependencies:
-```bash
-cd server
-npm install
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-
-3. Install frontend dependencies:
-```bash
-cd ../client
-npm install
-```
-
-4. Create environment files:
-- Create `.env` in the server directory with:
-```
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/tts-platform
-JWT_SECRET=your_jwt_secret_key
-GEMINI_API_KEY=your_gemini_api_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
-FRONTEND_URL=http://localhost:3000
-```
-
-- Create `.env` in the client directory with:
-```
-VITE_API_URL=http://localhost:5000/api
-VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
-```
-
-5. Start the development servers:
-- Backend:
-```bash
-cd server
-npm run dev
-```
-
-- Frontend:
-```bash
-cd client
-npm run dev
-```
-
-## Project Structure
-
-```
-tts-platform/
-├── client/                 # Frontend React application
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── pages/         # Page components
-│   │   ├── services/      # API services
-│   │   └── App.tsx        # Main application component
-│   └── package.json
-├── server/                 # Backend Node.js application
-│   ├── src/
-│   │   ├── models/        # MongoDB models
-│   │   ├── routes/        # API routes
-│   │   ├── middleware/    # Express middleware
-│   │   └── server.js      # Main server file
-│   └── package.json
-└── README.md
-```
-
-## API Endpoints
-
-### Authentication
-- POST /api/auth/register - Register new user
-- POST /api/auth/login - User login
-- GET /api/auth/profile - Get user profile
-- PUT /api/auth/profile - Update profile
-- PUT /api/auth/change-password - Change password
-
-### Documents
-- POST /api/documents/upload - Upload PDF
-- POST /api/documents/process/:id - Process document
-- GET /api/documents - Get user's documents
-- GET /api/documents/:id - Get single document
-- DELETE /api/documents/:id - Delete document
-
-### Notes
-- POST /api/notes - Create note
-- GET /api/notes - Get user's notes
-- GET /api/notes/:id - Get single note
-- PUT /api/notes/:id - Update note
-- DELETE /api/notes/:id - Delete note
-- POST /api/notes/:id/collaborators - Add collaborator
-- DELETE /api/notes/:id/collaborators/:userId - Remove collaborator
-- GET /api/notes/:id/history - Get version history
-
-### Subscription
-- GET /api/subscription/plans - Get subscription plans
-- POST /api/subscription/create-checkout-session - Create checkout session
-- GET /api/subscription/status - Get subscription status
-- POST /api/subscription/cancel - Cancel subscription
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Google Gemini API for text processing
-- Stripe for payment processing
-- Material-UI for UI components
-- MongoDB for database 
