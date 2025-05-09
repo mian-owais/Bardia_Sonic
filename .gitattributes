@@ -8,3 +8,6 @@
 "*.gz binary" 
 "*.tar binary" 
 "*.tgz binary" 
+* text=auto eol=lf
+*.mp3 binary
+*.pdf binary
