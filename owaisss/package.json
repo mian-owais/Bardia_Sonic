@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "framer-motion": "^12.9.2",
+    "pdfjs-dist": "^5.2.133",
+    "react-scripts": "^5.0.1",
+    "vite": "^6.3.5"
+  }
+}
