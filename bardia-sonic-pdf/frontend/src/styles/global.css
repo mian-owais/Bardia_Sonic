@@ -1,0 +1,734 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Roboto+Mono&display=swap');
+
+:root {
+  /* Color Variables */
+  --primary: #6366F1;
+  --primary-light: #818CF8;
+  --primary-dark: #4F46E5;
+  --secondary: #EC4899;
+  --secondary-light: #F472B6;
+  --secondary-dark: #DB2777;
+  --accent: #F97316;
+  --accent-light: #34D399;
+  --accent-dark: #059669;
+  --dark: #1E293B;
+  --dark-gray: #374151;
+  --medium-gray: #6B7280;
+  --light-gray: #E5E7EB;
+  --light: #F9FAFB;
+  --white: #FFFFFF;
+  --info: #3B82F6;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --background: #FFFFFF;
+  --background-dark: #111827;
+  --gray: #64748B;
+  --gray-light: #E2E8F0;
+  --gray-dark: #334155;
+  --text: #0F172A;
+  --border: #CBD5E1;
+  
+  /* Animation duration */
+  --transition-speed: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Dark mode */
+body.dark-mode {
+  --background: #0F172A;
+  --text: #F8FAFC;
+  --border: #334155;
+  --gray-light: #334155;
+  --gray-dark: #CBD5E1;
+  color: var(--text);
+  background-color: var(--background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-dark) !important;
+  border-color: var(--secondary-dark) !important;
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.btn-accent:hover {
+  filter: brightness(90%);
+  color: white;
+}
+
+.btn-outline-primary {
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary) !important;
+  color: white !important;
+}
+
+/* Card and container styles */
+.card {
+  border-radius: 0.75rem;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.container-fluid, .container {
+  padding: 2rem;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-gray) 100%);
+  color: white;
+}
+
+/* Pill badges */
+.badge {
+  padding: 0.35em 0.65em;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+/* PDF viewer container */
+.pdf-container {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* PDF toolbar styles - Updated for better responsiveness */
+.pdf-toolbar {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  z-index: 100;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  height: auto;
+  min-height: 40px;
+}
+
+.dark-mode .pdf-toolbar {
+  background-color: #343a40;
+  border-bottom-color: #495057;
+  color: #f8f9fa;
+}
+
+/* Toolbar sections */
+.pdf-toolbar > div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Navigation controls */
+.page-navigation {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: auto;
+  flex-shrink: 0;
+}
+
+.page-navigation input {
+  width: 20px !important;
+  text-align: center;
+  padding: 0.25rem;
+  height: 28px;
+}
+
+/* Button groups in toolbar */
+.pdf-toolbar .btn-group {
+  flex-shrink: 0;
+}
+
+.pdf-toolbar .btn {
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 10px;
+}
+
+/* Responsive adjustments for toolbar */
+@media (max-width: 768px) {
+  .pdf-toolbar {
+    padding: 0.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+
+  .pdf-toolbar::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .pdf-toolbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  .pdf-toolbar > div {
+    margin-right: 0.25rem;
+  }
+
+  .pdf-toolbar > div:last-child {
+    margin-right: 0;
+  }
+
+  .page-navigation span {
+    display: none;
+  }
+}
+
+/* Ensure buttons don't wrap or shrink */
+.zoom-controls,
+.audio-controls,
+.view-controls {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* PDF page */
+.react-pdf__Page {
+  margin: 1rem auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.react-pdf__Page__textContent {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  opacity: 0.2;
+  line-height: 1.0;
+}
+
+.react-pdf__Page__textContent span {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+}
+
+.react-pdf__Page__annotations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.react-pdf__Page__annotations .annotationLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.react-pdf__Page__annotations .annotationLayer section {
+  position: absolute;
+  transform-origin: 0 0;
+}
+
+.react-pdf__Page__annotations .annotationLayer .linkAnnotation {
+  position: absolute;
+  cursor: pointer;
+}
+
+.react-pdf__Page__annotations .annotationLayer .linkAnnotation a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 0, 0.2);
+}
+
+.react-pdf__Page__annotations .annotationLayer .linkAnnotation:hover a {
+  background-color: rgba(255, 255, 0, 0.4);
+}
+
+/* Audio controls */
+.volume-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--light-gray);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Custom navbar */
+.navbar-custom {
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 0.25rem 0.5rem;
+  height: auto;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  padding: 0;
+}
+
+/* Navbar content wrapper */
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+/* Navbar buttons and controls */
+.navbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.navbar-controls .btn {
+  padding: 0.25rem 0.5rem;
+  height: auto;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 768px) {
+  .navbar-custom {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .navbar-content {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+  }
+
+  .navbar-content::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .navbar-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+  }
+
+  .navbar-controls {
+    padding-left: 0.25rem;
+  }
+}
+
+/* Loading spinners */
+.spinner-custom {
+  color: var(--primary);
+}
+
+/* Audio info panel */
+.audio-info-panel {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+/* Premium badge */
+.premium-badge {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+/* Custom switch */
+.form-switch .form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.slide-in-up {
+  animation: slideInUp 0.5s ease-in-out;
+}
+
+/* App logo animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.logo-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container-fluid, .container {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Enhanced PDF Reader Styles */
+.pdf-reader-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.pdf-content-area {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.pdf-viewer {
+  flex: 1;
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.pdf-viewer.with-sidebar {
+  width: 70%;
+}
+
+.pdf-viewer.full-width {
+  width: 100%;
+}
+
+.pdf-container {
+  height: calc(100vh - 100px);
+  overflow: auto;
+  padding: 1rem;
+}
+
+.audio-sidebar {
+  width: 30%;
+  overflow-y: auto;
+  height: calc(100vh - 100px);
+  border-left: 1px solid #dee2e6;
+  transition: width 0.3s ease;
+}
+
+.dark-mode .audio-sidebar {
+  border-left-color: #495057;
+}
+
+.reading-progress {
+  height: 3px;
+  border-radius: 0;
+}
+
+/* Improve PDF canvas appearance */
+.react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.react-pdf__Page {
+  margin: 1rem 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .react-pdf__Page {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode-pdf .react-pdf__Page {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.dark-mode-pdf .react-pdf__Page canvas {
+  background-color: #ffffff !important;
+}
+
+.dark-mode .dark-mode-page {
+  background-color: #303030;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pdf-viewer.with-sidebar {
+    width: 60%;
+  }
+  
+  .audio-sidebar {
+    width: 40%;
+  }
+}
+
+@media (max-width: 576px) {
+  .pdf-viewer.with-sidebar {
+    width: 100%;
+  }
+  
+  .audio-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    z-index: 1000;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pdf-toolbar {
+    padding: 0.25rem;
+  }
+  
+  .page-navigation span {
+    display: none;
+  }
+}
+
+/* More specific styles for MS Edge-like PDF viewer */
+.page-navigation {
+  display: flex;
+  align-items: center;
+}
+
+.page-navigation input {
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.audio-controls button {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-switcher .form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Mobile sidebar toggle animation */
+.sidebar-toggle-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.sidebar-toggle-overlay.show {
+  display: block;
+}
+
+/* Improve effect timeline styling */
+.effects-timeline {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.effect-item {
+  border-left: 4px solid var(--primary);
+  transition: all 0.2s ease;
+}
+
+.effect-item:hover {
+  transform: translateX(2px);
+}
+
+/* Active effect animation */
+@keyframes effectPlaying {
+  0% { background-color: rgba(99, 102, 241, 0.1); }
+  50% { background-color: rgba(99, 102, 241, 0.2); }
+  100% { background-color: rgba(99, 102, 241, 0.1); }
+}
+
+.effect-item.active {
+  animation: effectPlaying 1s infinite;
+}
+
+/* Background gradients */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+/* Book card styling */
+.book-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.book-cover {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--gray-light);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover img {
+  transform: scale(1.05);
+}
+
+.book-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pdf-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-icon {
+  color: var(--danger);
+} 

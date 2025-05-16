@@ -1,0 +1,20 @@
+{
+  "name": "bardia-sonic-pdf",
+  "version": "1.0.0",
+  "description": "PDF reader with audio capabilities",
+  "main": "index.js",
+  "scripts": {
+    "frontend:dev": "cd frontend && npm run dev",
+    "backend:dev": "cd backend && python app.py",
+    "backend:install": "cd backend && pip install -r requirements.txt",
+    "frontend:install": "cd frontend && npm install",
+    "install": "npm run backend:install && npm run frontend:install",
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "build": "cd frontend && npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "author": "",
+  "license": "MIT"
+} 
